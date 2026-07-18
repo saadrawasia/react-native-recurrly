@@ -1,50 +1,88 @@
-# Welcome to your Expo app 👋
+# Recurrly — Subscription Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile app built with **React Native** and **Expo** for tracking personal subscriptions, monitoring upcoming renewals, and getting a clear view of recurring spending.
 
-## Get started
+> **Built following the [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) YouTube channel tutorial.**
 
-1. Install dependencies
+> **This is a sample/demo project.** It is provided as-is for learning and reference purposes. The creator accepts no responsibility for any issues, data loss, or damages that may arise from using this code. Use at your own risk.
+
+---
+
+## Features
+
+- **Dashboard** — See total monthly spend and a list of all active subscriptions at a glance
+- **Upcoming renewals** — Subscriptions renewing within the next 7 days are surfaced automatically
+- **Add & manage subscriptions** — Create subscriptions with name, amount, billing cycle, category, and renewal date
+- **Insights** — Visual breakdown of spending by category
+- **Authentication** — Secure sign-in and sign-up powered by [Clerk](https://clerk.com)
+- **Persistent storage** — Subscription data persists across sessions using Zustand + Expo SecureStore
+
+## Tech Stack
+
+| Layer         | Technology                                                      |
+| ------------- | --------------------------------------------------------------- |
+| Framework     | [Expo](https://expo.dev) (SDK 54) with Expo Router              |
+| Language      | TypeScript                                                      |
+| Styling       | [NativeWind](https://www.nativewind.dev/) (Tailwind CSS for RN) |
+| Auth          | [Clerk](https://clerk.com)                                      |
+| State         | [Zustand](https://zustand-demo.pmnd.rs/)                        |
+| Date handling | [Day.js](https://day.js.org/)                                   |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- Android Studio (for Android builds) or Xcode (for iOS builds)
+- A [Clerk](https://clerk.com) account with a publishable key
+
+### Installation
+
+1. Clone the repository and install dependencies:
 
    ```bash
+   git clone <repo-url>
+   cd react-native-recurrly
    npm install
    ```
 
-2. Start the app
+2. Create a `.env` file in the root with your Clerk key:
+
+   ```env
+   EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   ```
+
+3. Start the development server:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+   Then open in a:
+   - [Development build](https://docs.expo.dev/develop/development-builds/introduction/) (recommended)
+   - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+   - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Run on a physical device
 
 ```bash
-npm run reset-project
+npx expo run:android --device
+npx expo run:ios --device
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project Structure
 
-## Learn more
+```
+app/                  # Expo Router screens
+  (auth)/             # Sign-in / Sign-up screens
+  (tabs)/             # Bottom tab screens (Home, Insights, Settings, Subscriptions)
+  subscriptions/      # Subscription detail screen
+components/           # Reusable UI components
+constants/            # Static data, icons, images, theme
+lib/                  # Utilities and Zustand store
+assets/               # Fonts, icons, images
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Disclaimer
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is a **sample application** intended for educational and demonstration purposes only. It is not production-ready. The creator provides no warranties of any kind and assumes no liability for any use of this code. You are solely responsible for any consequences of deploying or using this software.
